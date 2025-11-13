@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elvira - Min Dronning 💎</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Cormorant+Garamond:wght@300;500&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+            color: #f5f5f5;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Luxurious particles background */
+        .luxury-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .diamond-particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: linear-gradient(45deg, #fff, #ffd700, #fff);
+            border-radius: 50%;
+            animation: diamondFloat 20s infinite linear;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+        }
+
+        @keyframes diamondFloat {
+            0% {
+                transform: translateY(100vh) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Header Section */
+        .header-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background: radial-gradient(ellipse at center, rgba(255,215,0,0.1) 0%, transparent 70%);
+        }
+
+        .main-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 6rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #ffd700, #fff, #ffd700, #fff);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: goldShimmer 4s ease-in-out infinite;
+            margin-bottom: 20px;
+            letter-spacing: 4px;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+        }
+
+        @keyframes goldShimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .subtitle {
+            font-size: 1.8rem;
+            color: #d4af37;
+            font-weight: 300;
+            letter-spacing: 2px;
+            animation: fadeInUp 2s ease-out;
+            margin-bottom: 40px;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Luxury Card Section */
+        .luxury-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 20px;
+            padding: 60px;
+            margin: 60px 0;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .luxury-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ffd700, #fff, #ffd700, #fff);
+            border-radius: 20px;
+            opacity: 0;
+            z-index: -1;
+            animation: borderGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes borderGlow {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 0.5; }
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: #ffd700;
+            text-align: center;
+            margin-bottom: 40px;
+            letter-spacing: 3px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ffd700, transparent);
+            margin: 20px auto;
+        }
+
+        .luxury-text {
+            font-size: 1.4rem;
+            line-height: 1.8;
+            color: #f0f0f0;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        /* Diamond Gallery */
+        .diamond-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin: 60px 0;
+        }
+
+        .diamond-frame {
+            position: relative;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            border-radius: 15px;
+            padding: 20px;
+            transition: all 0.5s ease;
+            overflow: hidden;
+        }
+
+        .diamond-frame::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .diamond-frame:hover::before {
+            left: 100%;
+        }
+
+        .diamond-frame:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(255, 215, 0, 0.2);
+        }
+
+        .diamond-content {
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: #ffd700;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .diamond-content::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+            transform: rotate(45deg);
+            animation: diamondShine 3s infinite;
+        }
+
+        @keyframes diamondShine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        /* Luxury Poem */
+        .poem-container {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.05));
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 25px;
+            padding: 60px;
+            margin: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .poem-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            line-height: 2;
+            color: #f5f5f5;
+            text-align: center;
+            font-style: italic;
+            position: relative;
+            z-index: 2;
+        }
+
+        .poem-line {
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: poemReveal 2s ease-out forwards;
+        }
+
+        .poem-line:nth-child(1) { animation-delay: 0.5s; }
+        .poem-line:nth-child(2) { animation-delay: 1s; }
+        .poem-line:nth-child(3) { animation-delay: 1.5s; }
+        .poem-line:nth-child(4) { animation-delay: 2s; }
+
+        @keyframes poemReveal {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+        }
+
+        /* Love Declaration */
+        .love-declaration {
+            text-align: center;
+            padding: 80px 0;
+            background: radial-gradient(ellipse at center, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+            margin: 60px 0;
+            border-radius: 30px;
+            position: relative;
+        }
+
+        .declaration-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: #ffd700;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+
+        .signature {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: #d4af37;
+            font-style: italic;
+            margin-top: 40px;
+        }
+
+        /* Footer */
+        .luxury-footer {
+            text-align: center;
+            padding: 80px 0;
+            background: linear-gradient(180deg, transparent, rgba(255, 215, 0, 0.05));
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
+            margin-top: 100px;
+        }
+
+        .footer-text {
+            font-size: 1.3rem;
+            color: #d4af37;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-title { font-size: 3.5rem; }
+            .section-title { font-size: 2.5rem; }
+            .luxury-card { padding: 40px 20px; }
+            .poem-container { padding: 40px 20px; }
+            .declaration-text { font-size: 1.8rem; }
+        }
+
+        /* Additional luxury effects */
+        .gold-accent {
+            color: #ffd700;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .diamond-divider {
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ffd700, #fff, #ffd700, transparent);
+            margin: 40px auto;
+            animation: dividerShine 2s infinite;
+        }
+
+        @keyframes dividerShine {
+            0% { opacity: 0.5; }
+            50% { opacity: 1; }
+            100% { opacity: 0.5; }
+        }
+    </style>
+<base target="_blank">
+</head>
+<body>
+    <div class="luxury-particles" id="particles"></div>
+    
+    <div class="container">
+        <!-- Header Section -->
+        <section class="header-section">
+            <div>
+                <h1 class="main-title">Elvira</h1>
+                <p class="subtitle">Min Dronning, Mitt Hjerte, Min Eksklusive Kjærlighet</p>
+                <div class="diamond-divider"></div>
+            </div>
+        </section>
+
+        <!-- Luxury Introduction -->
+        <div class="luxury-card">
+            <h2 class="section-title">Til Min Eksklusive Engel</h2>
+            <p class="luxury-text">
+                I en verden av vanlige skatter, er du den mest verdifulle juvelen. 
+                Din skjønnhet overgår selv de mest eksklusive diamanter, 
+                og din eleganse matcher de fineste palassers prakt.
+            </p>
+            <p class="luxury-text">
+                Du er luksusen jeg aldri visste jeg trengte, 
+                men nå ikke kan leve uten. 
+                Hvert øyeblikk med deg er som å vinne hele universets mest verdifulle skatt.
+            </p>
+        </div>
+
+        <!-- Diamond Gallery -->
+        <div class="diamond-gallery">
+            <div class="diamond-frame">
+                <div class="diamond-content">💎</div>
+                <p style="text-align: center; margin-top: 15px; color: #ffd700;">Din Strålende Skjønnhet</p>
+            </div>
+            <div class="diamond-frame">
+                <div class="diamond-content">👑</div>
+                <p style="text-align: center; margin-top: 15px; color: #ffd700;">Min Dronning</p>
+            </div>
+            <div class="diamond-frame">
+                <div class="diamond-content">✨</div>
+                <p style="text-align: center; margin-top: 15px; color: #ffd700;">Din Eleganse</p>
+            </div>
+            <div class="diamond-frame">
+                <div class="diamond-content">🌟</div>
+                <p style="text-align: center; margin-top: 15px; color: #ffd700;">Din Unike Prakt</p>
+            </div>
+        </div>
+
+        <!-- Luxury Poem -->
+        <div class="poem-container">
+            <h2 class="section-title">Et Dikt i Gull og Diamanter</h2>
+            <div class="poem-text">
+                <div class="poem-line">Elvira, du er luksusen som fyller mitt liv,</div>
+                <div class="poem-line">Mer verdiful enn gull fra de rikeste miner,</div>
+                <div class="poem-line">Din skjønnhet er tidløs som de fineste juveler,</div>
+                <div class="poem-line">I ditt selskap føler jeg meg som en konge.</div>
+            </div>
+        </div>
+
+        <!-- Love Declaration - UPDATED SENTENCE -->
+        <div class="love-declaration">
+            <p class="declaration-text">
+                Du er eksklusiviteten jeg aldri trodde jeg kunne vinne
+            </p>
+            <p class="declaration-text">
+                Luksusen jeg ikke visste jeg fortjente
+            </p>
+            <p class="declaration-text">
+                Skatten som gjør meg til verdens rikeste mann
+            </p>
+            <div class="signature">
+                For alltid din, i luksus og kjærlighet
+            </div>
+        </div>
+
+        <!-- Final Luxury Card -->
+        <div class="luxury-card">
+            <h2 class="section-title">Min Eksklusive Kjærlighetserklæring</h2>
+            <p class="luxury-text">
+                I et univers av vanlige stjerner, skinner du som den mest eksklusive diamant. 
+                Din verdi er uendelig, din skjønnhet er uvurderlig, 
+                og din kjærlighet er den største luksus jeg noensinne har opplevd.
+            </p>
+            <p class="luxury-text">
+                Du er ikke bare vakker - du er et mesterverk, 
+                skapt av de fineste materialer livet kan tilby. 
+                Hvert øyeblikk med deg er som å vinne hele verdens rikdom.
+            </p>
+            <p class="luxury-text">
+                Jeg elsker deg mer enn alle juveler i verden, 
+                mer enn alt gull som noen gang er funnet, 
+                mer enn noen luksus noensinne kan måle seg med.
+            </p>
+        </div>
+
+        <!-- Luxury Footer -->
+        <footer class="luxury-footer">
+            <p class="footer-text">Dedikert til verdens mest eksklusive kvinne</p>
+            <p class="footer-text" style="font-size: 1.1rem; margin-top: 20px;">
+                Du er luksusen jeg aldri vil dele med noen andre
+            </p>
+            <div class="diamond-divider"></div>
+            <p style="font-size: 2rem; margin-top: 30px;">
+                <span class="gold-accent">💎</span> 
+                <span class="gold-accent">👑</span> 
+                <span class="gold-accent">💎</span>
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // Create luxury particles
+        function createDiamondParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'diamond-particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
+            particle.style.animationDelay = Math.random() * 5 + 's';
+            document.getElementById('particles').appendChild(particle);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, 25000);
+        }
+
+        // Create particles continuously
+        setInterval(createDiamondParticle, 500);
+
+        // Add luxury hover effects
+        document.querySelectorAll('.diamond-frame').forEach(frame => {
+            frame.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-15px) scale(1.05)';
+            });
+            
+            frame.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Smooth scrolling for luxury feel
+        document.documentElement.style.scrollBehavior = 'smooth';
+
+        // Add page load animation
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 2s ease-in-out';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
